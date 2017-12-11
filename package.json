@@ -1,0 +1,23 @@
+{
+  "name": "express-seo-breadcrumbs",
+  "version": "1.0.0",
+  "description": "middleware to produce seo friendly breadcrumbs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nedavniat/express-seo-breadcrumbs.git"
+  },
+  "keywords": [
+    "express",
+    "breadcrumbs"
+  ],
+  "author": "nedavnia tatiana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nedavniat/express-seo-breadcrumbs/issues"
+  },
+  "homepage": "https://github.com/nedavniat/express-seo-breadcrumbs#readme"
+}
