@@ -7,6 +7,7 @@ A handy middleware to produce seo-friendly breadcrumbs with **zero dependencies*
 ### Prerequisites
 
 [Node.js](https://nodejs.org/en/) and npm(for Linux users) should be installed;
+
 An [Express JS](https://expressjs.com/) should be used on the project.
 
 ### Installing
@@ -17,13 +18,13 @@ npm i -S express-seo-breadcrumbs
 ```
 in your project main file (server.js, app.js or similar) include the following:
 ```javascript
-const breadcrumbs = require('express-seo-breadcrumbs';
+const breadcrumbs = require('express-seo-breadcrumbs');
 app.use(breadcrumbs.init());
 ```
 
 set home location:
 ```javascript
-app.use(breadcrumbs.setHome({name: 'Home', url: '/'})); //sample values are defaults
+app.use(breadcrumbs.setHome({ name: 'Home', url: '/' })); //sample values are defaults
 ```
 
 whenever you need to set a breadcrumb use within the route:
@@ -34,7 +35,7 @@ app.get('/dashboard', (req, res) => {
 });
 ```
 
-access breadcrumbs to pass to front by calling ```javascript req.breadcrumbs(); ```
+access breadcrumbs to pass to front by calling ``` req.breadcrumbs(); ```
 
 sample with express-handlebars:
 ```javascript
