@@ -40,7 +40,7 @@ const addBreadcrumbs = (crumb) => {
       return;
     }
 
-    if (breadcrumbs.length === 2) {
+    if (breadcrumbs.length === 2 && !crumb.url.includes(currentRoute)) {
       breadcrumbs.push(crumb);
       currentSubroute = crumb.url.split('/')[2];
       return;
@@ -54,7 +54,7 @@ const addBreadcrumbs = (crumb) => {
     }
 
     if (!crumb.url.includes(currentSubroute)) {
-      breadcrumbs.splice(1);
+      breadcrumbs.splice(2);
       breadcrumbs.push(crumb);
       currentSubroute = crumb.url.split('/')[2];
       return;
@@ -65,7 +65,7 @@ const addBreadcrumbs = (crumb) => {
 };
 
 /**
- * @function setHome sets homepage location
+ * @function setHome sets home page location
  * @param {Object}
  */
 const setHome = ({name = 'Home', url = '/'}) => breadcrumbs.push({name, url});

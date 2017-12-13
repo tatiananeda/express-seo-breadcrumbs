@@ -1,6 +1,6 @@
 {
   "name": "express-seo-breadcrumbs",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "middleware to produce seo friendly breadcrumbs",
   "main": "index.js",
   "scripts": {
