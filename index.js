@@ -40,7 +40,7 @@ const addBreadcrumbs = (crumb) => {
       return;
     }
 
-    if (breadcrumbs.length === 2 && !crumb.url.includes(currentRoute)) {
+    if (breadcrumbs.length === 2 && crumb.url.includes(currentRoute)) {
       breadcrumbs.push(crumb);
       currentSubroute = crumb.url.split('/')[2];
       return;
