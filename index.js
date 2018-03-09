@@ -29,7 +29,7 @@ const addBreadcrumbs = (crumb) => {
   if (~idx) {
 
     if (idx !== 0) {
-      breadcrumbs.splice(idx + 1);
+      breadcrumbs.splice(idx + 1, breadcrumbs.length);
     }
 
   } else {
@@ -47,14 +47,14 @@ const addBreadcrumbs = (crumb) => {
     }
 
     if (!crumb.url.includes(currentRoute)) {
-      breadcrumbs.splice(1);
+      breadcrumbs.splice(1, breadcrumbs.length);
       breadcrumbs.push(crumb);
       currentRoute = crumb.url.split('/')[1];
       return;
     }
 
     if (!crumb.url.includes(currentSubroute)) {
-      breadcrumbs.splice(2);
+      breadcrumbs.splice(2, breadcrumbs.length);
       breadcrumbs.push(crumb);
       currentSubroute = crumb.url.split('/')[2];
       return;
