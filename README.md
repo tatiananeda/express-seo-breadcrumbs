@@ -1,6 +1,8 @@
 # Express Seo Breadcrumbs
 
 A handy middleware to produce seo-friendly breadcrumbs with **zero dependencies** and simple interface.
+ Breadcrumbs are accumulated while each new breadcrumb's url includes the url of the previous crumb, thus reflecting users journey in depth of the app.
+ Main page crumb is always stored.
 
 ## Getting Started
 
