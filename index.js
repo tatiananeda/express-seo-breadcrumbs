@@ -5,17 +5,18 @@
 const breadcrumbs = [];
 
 /**
- * variables to detect current route and current subroute
- * in order to clear breadcrumbs when user moves to another section of site
+ * @function exists
+ * @param {Object}
+ * @returns index of the same object as a new crumb within an array of breadcrumbs
  */
-let currentRoute, currentSubroute;
+const exists = obj => breadcrumbs.findIndex(crumb => crumb.name === obj.name && crumb.url === obj.url);
 
 /**
  * @function exists
  * @param {Object}
- * @returns index of object within an array of breadcrumbs
+ * @returns index of an object whose url is included into url of the new crumb within an array of breadcrumbs
  */
-const exists = (obj) => breadcrumbs.findIndex(crumb => crumb.name === obj.name && crumb.url === obj.url);
+const isInner = obj => breadcrumbs.findIndex(crumb => obj.url.includes(`${crumb.url}/`));
 
 /**
  * @function addBreadcrumbs getter/setter for breadcrumbs
@@ -25,42 +26,25 @@ const addBreadcrumbs = (crumb) => {
   if (!crumb) return breadcrumbs;
 
   const idx = exists(crumb);
+  const idxOuter = isInner(crumb);
 
-  if (~idx) {
-
-    if (idx !== 0) {
-      breadcrumbs.splice(idx + 1, breadcrumbs.length);
-    }
-
-  } else {
-
-    if (breadcrumbs.length === 1) {
-      breadcrumbs.push(crumb);
-      currentRoute = crumb.url.split('/')[1];
-      return;
-    }
-
-    if (breadcrumbs.length === 2 && !crumb.url.includes(currentRoute)) {
-      breadcrumbs.push(crumb);
-      currentSubroute = crumb.url.split('/')[2];
-      return;
-    }
-
-    if (!crumb.url.includes(currentRoute)) {
-      breadcrumbs.splice(1, breadcrumbs.length);
-      breadcrumbs.push(crumb);
-      currentRoute = crumb.url.split('/')[1];
-      return;
-    }
-
-    if (!crumb.url.includes(currentSubroute)) {
-      breadcrumbs.splice(2, breadcrumbs.length);
-      breadcrumbs.push(crumb);
-      currentSubroute = crumb.url.split('/')[2];
-      return;
-    }
-
+  if(breadcrumbs.length === 1) {
     breadcrumbs.push(crumb);
+    return;
+  }
+
+  if(!~idx && ~idxOuter){
+    if(idxOuter !== breadcrumbs.length - 1){
+      breadcrumbs.splice(idxOuter + 1, breadcrumbs.length);
+    }
+    breadcrumbs.push(crumb);
+    return;
+  }
+
+  if(!~idx && !~idxOuter){
+    breadcrumbs.splice(1, breadcrumbs.length);
+    breadcrumbs.push(crumb);
+    return;
   }
 };
 
